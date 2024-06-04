@@ -19,35 +19,35 @@ public struct NavigationPath {
 	}
 
 	public init() {
-		if #available(iOS 16.0, *) {
-			box = SwiftUI.NavigationPath()
-		} else {
+//		if #available(iOS 16.0, *) {
+//			box = SwiftUI.NavigationPath()
+//		} else {
 			box = NavigationPathBackport(items: [])
-		}
+//		}
 	}
 
 	public init<S: Sequence>(_ elements: S) where S.Element: Hashable {
-		if #available(iOS 16.0, *) {
-			box = SwiftUI.NavigationPath(elements)
-		} else {
+//		if #available(iOS 16.0, *) {
+//			box = SwiftUI.NavigationPath(elements)
+//		} else {
 			box = NavigationPathBackport(items: elements.map { .init(value: $0) })
-		}
+//		}
 	}
 
 	public init<S: Sequence>(_ elements: S) where S.Element: Hashable, S.Element: Codable {
-		if #available(iOS 16.0, *) {
-			box = SwiftUI.NavigationPath(elements)
-		} else {
+//		if #available(iOS 16.0, *) {
+//			box = SwiftUI.NavigationPath(elements)
+//		} else {
 			box = NavigationPathBackport(items: elements.map { .init(value: $0) })
-		}
+//		}
 	}
 
 	public init(_ codable: CodableRepresentation) {
-		if #available(iOS 16.0, *) {
-			box = SwiftUI.NavigationPath(codable.storage as! SwiftUI.NavigationPath.CodableRepresentation)
-		} else {
+//		if #available(iOS 16.0, *) {
+//			box = SwiftUI.NavigationPath(codable.storage as! SwiftUI.NavigationPath.CodableRepresentation)
+//		} else {
 			box = NavigationPathBackport(items: codable.storage as! [NavigationPathItem])
-		}
+//		}
 	}
 }
 
@@ -67,10 +67,10 @@ public extension NavigationPath {
 
 extension NavigationPath: Equatable {
 	public static func == (lhs: Self, rhs: Self) -> Bool {
-		if #available(iOS 16.0, *) {
-			return lhs.box as? SwiftUI.NavigationPath == rhs.box as? SwiftUI.NavigationPath
-		} else {
+//		if #available(iOS 16.0, *) {
+//			return lhs.box as? SwiftUI.NavigationPath == rhs.box as? SwiftUI.NavigationPath
+//		} else {
 			return lhs.box as? NavigationPathBackport == rhs.box as? NavigationPathBackport
-		}
+//		}
 	}
 }

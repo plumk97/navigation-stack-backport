@@ -10,6 +10,7 @@ struct UIKitNavigation<Root: View>: UIViewControllerRepresentable {
 		navigationController.navigationBar.prefersLargeTitles = true
 		navigationController.navigationBar.barStyle = .default
 		navigationController.navigationBar.isTranslucent = true
+        navigationController.setNavigationBarHidden(true, animated: false)
 		authority.navigationController = navigationController
 		return navigationController
 	}
